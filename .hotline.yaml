@@ -1,0 +1,2 @@
+- id: "github/$1"
+  url:  "https://github.com/rgrannell1/$1"

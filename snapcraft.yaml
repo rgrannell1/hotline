@@ -1,0 +1,28 @@
+name: hotline
+grade: stable
+version: v0.1.0
+base: core18
+
+icon: icon.png
+license: MIT
+
+summary: Open Links Faster
+
+description: >
+  hotline is a command-line tool that lets you open sites faster.
+
+confinement: strict
+
+apps:
+  hotline:
+    command: bin/hotline
+    plugs:
+      - home
+
+parts:
+  hotline:
+    source: .
+    plugin: nodejs
+    nodejs-version: 14.3.0
+    nodejs-package-manager: yarn
+    build-packages: ['libcurl4-openssl-dev', 'git']
