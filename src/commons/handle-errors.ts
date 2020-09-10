@@ -4,7 +4,13 @@ Please report the following error message to https://github.com/rgrannell1/hotli
 (along with the input text if possible):
 `
 
-const handleErrors = err => {
+interface CodedError {
+  message: string,
+  stack: string,
+  code: string
+}
+
+export const handleErrors = (err:CodedError) => {
   if (err.code) {
     console.error(err.message)
   } else {
@@ -16,5 +22,3 @@ const handleErrors = err => {
 
   process.exit(1)
 }
-
-module.exports = handleErrors

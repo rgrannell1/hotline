@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
-const neodoc = require('neodoc')
+import neodoc from 'neodoc'
 
-const handleErrors = require('../commons/handle-errors')
+import { handleErrors } from '../commons/handle-errors.js'
+import { constants } from '../commons/constants.js'
 
-const constants = require('../commons/constants')
+import callApp from '../cli/call-app.js'
 
 const docs = `
 Name:
@@ -62,8 +63,6 @@ Copyright:
   OTHER DEALINGS IN THE SOFTWARE.
 
 `
-
-const callApp = require('../cli/call-app')
 
 const args = neodoc.run(docs)
 

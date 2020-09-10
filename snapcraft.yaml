@@ -21,6 +21,7 @@ apps:
 
 parts:
   hotline:
+    install: npm run tsc
     source: .
     plugin: nodejs
     nodejs-version: 14.3.0
