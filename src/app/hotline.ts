@@ -1,16 +1,24 @@
 
 import {loadConfig} from './load-config.js'
+import findPattern from './find-pattern.js'
+import performSubstitutions from './perform-substitutions.js'
+import openBrowser from './open-browser.js'
 
-interface HotlineArgs {
-  config: string | undefined
-}
+import {
+  HotlineArgs
+} from '../commons/types'
 
 const hotline = async (args:HotlineArgs) => {
-  const config = loadConfig(args.config)
+  const config = await loadConfig(args.config)
+
+  const pattern = findPattern(config, args)
+  const link = performSubstitutions(pattern.url, args)
+
+  return openBrowser(link)
 }
 
-hotline.preprocess = () => {
-
+hotline.preprocess = (args:any) => {
+  return args
 }
 
 export default hotline

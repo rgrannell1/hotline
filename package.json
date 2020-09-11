@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "hl": "out/cli/hotline.js",
+    "hotline": "out/cli/hotline.js"
+  },
   "scripts": {
     "tsc": "tsc"
   },
@@ -12,7 +16,9 @@
   "dependencies": {
     "@types/node": "^14.10.0",
     "@types/yaml": "^1.9.7",
+    "nanoid": "^3.1.12",
     "neodoc": "^2.0.2",
+    "open": "^7.2.1",
     "typescript": "^4.0.2",
     "yaml": "^1.10.0"
   }

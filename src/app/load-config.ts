@@ -32,8 +32,5 @@ export const loadConfig = async (fpath:string | undefined) => {
   }
 
   const content = await fs.promises.readFile(targetPath)
-  const parsed = yaml.parse(content.toString())
-  const hotline = parseHotlineFile(parsed)
-
-  console.log( hotline )
+  return yaml.parse(content.toString())
 }

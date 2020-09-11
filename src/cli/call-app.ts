@@ -1,24 +1,26 @@
 
 import app from '../app/hotline.js'
-
-interface RawHotlineArgs {
-  '--version': any,
-  '--config': any,
-  '<id>': any,
-  '<args>': any
-}
+import {
+  RawHotlineArgs
+} from '../commons/types'
 
 const callApp = async (rawArgs:RawHotlineArgs) => {
   return app(callApp.preprocess(rawArgs))
 }
 
 callApp.preprocess = (rawArgs:any) => {
-  return {
+  const args = {
     version: rawArgs['--version'],
     config: rawArgs['--config'],
     id: rawArgs['<id>'],
-    args: rawArgs['<args>']
+    args: rawArgs['<arg>']
   }
+
+  if (!args.id) {
+    throw new Error('id was not provided.')
+  }
+
+  return args
 }
 
 export default callApp

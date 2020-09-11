@@ -11,8 +11,8 @@ const docs = `
 Name:
   hotline — open links faster.
 Usage:
-  hotline [-c <fpath> | --config <fpath>] <id> <arg>...
-  hotline [-c <fpath> | --config <fpath>] <id>
+  hotline [-c <fpath> | --config <fpath>] (<id>) <arg>...
+  hotline [-c <fpath> | --config <fpath>] (<id>)
   hotline (-h | --help | --version)
 
 Description:
