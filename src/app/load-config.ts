@@ -5,18 +5,6 @@ import * as path from 'path'
 
 import yaml from 'yaml'
 
-const parseHotlineFile = (content:any[]) => {
-  const state:any = {
-
-  }
-
-  for (const elem of content) {
-    state[elem.id] = elem
-  }
-
-  return state
-}
-
 export const loadConfig = async (fpath:string | undefined) => {
   const configPath = path.join(os.homedir(), '.hotline')
   const targetPath = fpath ?? configPath

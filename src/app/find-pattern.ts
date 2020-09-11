@@ -1,5 +1,10 @@
 
-const findPattern = (config:any, args:any) => {
+import {
+  HotlineArgs,
+  HotlineConfigEntry
+} from '../commons/types'
+
+const findPattern = (config:HotlineConfigEntry[], args:HotlineArgs) => {
   for (const {id, url} of config) {
     if (id === args.id) {
       return {id, url}
@@ -7,7 +12,7 @@ const findPattern = (config:any, args:any) => {
   }
 
   const sorted = config
-    .map((data:any) => data.id)
+    .map((data:HotlineConfigEntry) => data.id)
     .sort()
 
   throw new Error(`no patterns matched id ${args.id}. Available patterns:\n${sorted}\n`)

@@ -5,7 +5,8 @@ import performSubstitutions from './perform-substitutions.js'
 import openBrowser from './open-browser.js'
 
 import {
-  HotlineArgs
+  HotlineArgs,
+  RawHotlineArgs
 } from '../commons/types'
 
 const hotline = async (args:HotlineArgs) => {
@@ -17,7 +18,7 @@ const hotline = async (args:HotlineArgs) => {
   return openBrowser(link)
 }
 
-hotline.preprocess = (args:any) => {
+hotline.preprocess = (args:RawHotlineArgs) => {
   return args
 }
 

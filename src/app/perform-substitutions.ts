@@ -1,23 +1,31 @@
 
 import { nanoid } from 'nanoid'
 
+import {
+  HotlineArgs
+} from '../commons/types'
+
 const countSubstitutions = (pattern:string) => {
   let count = 0
   let message = pattern
 
-  for (let ith = 32; ith >= 0; --ith) {
-    let target = `\$${ith}`
+  // -- there is no reason to ever have this many variables...
+  const maxVariables = 32
+
+  for (let ith = maxVariables; ith >= 0; --ith) {
+    let target = '$' + ith
 
     if (pattern.includes(target)) {
       count++
-      message = message.replace(target, 'dummy-text')
+      message = message.replace(target, 'placeholder.')
     }
   }
 
   return count
 }
 
-const performSubstitutions = (pattern:any, args:any) => {
+
+const performSubstitutions = (pattern:string, args:HotlineArgs) => {
   const count = countSubstitutions(pattern)
 
   if (!args.args && count === 0) {
@@ -29,7 +37,7 @@ const performSubstitutions = (pattern:any, args:any) => {
   }
 
   let final = pattern
-  let pairs:any = {}
+  let pairs:{ [key:string]: string } = {}
 
   for (let ith = args.args.length - 1; ith >=0; --ith) {
     let sub = nanoid()

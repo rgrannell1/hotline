@@ -8,7 +8,7 @@ const callApp = async (rawArgs:RawHotlineArgs) => {
   return app(callApp.preprocess(rawArgs))
 }
 
-callApp.preprocess = (rawArgs:any) => {
+callApp.preprocess = (rawArgs:RawHotlineArgs) => {
   const args = {
     version: rawArgs['--version'],
     config: rawArgs['--config'],
