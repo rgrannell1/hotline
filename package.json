@@ -2,24 +2,33 @@
   "type": "module",
   "name": "bookmark",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Open Links Faster",
+  "author": "Róisín Grannell <r.grannell2@gmail.com>",
   "bin": {
-    "hl": "out/cli/hotline.js",
-    "hotline": "out/cli/hotline.js"
+    "hl": "out/cli/hotline.js"
   },
+  "preferGlobal": true,
   "scripts": {
     "tsc": "tsc"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rgrannell1/hotline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rgrannell1/hotline/issues"
+  },
+  "homepage": "https://github.com/rgrannell1/hotline#readme",
+  "license": "MIT",
+  "devDependencies": {
     "@types/node": "^14.10.0",
     "@types/yaml": "^1.9.7",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
     "nanoid": "^3.1.12",
     "neodoc": "^2.0.2",
     "open": "^7.2.1",
-    "typescript": "^4.0.2",
     "yaml": "^1.10.0"
   }
 }

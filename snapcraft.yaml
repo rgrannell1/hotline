@@ -3,13 +3,12 @@ grade: stable
 version: v0.1.0
 base: core18
 
-icon: icon.png
 license: MIT
 
 summary: Open Links Faster
 
 description: >
-  hotline is a command-line tool that lets you open sites faster.
+  hotline is a command-line tool that opens "parameterised" links.
 
 confinement: strict
 
@@ -21,7 +20,6 @@ apps:
 
 parts:
   hotline:
-    install: npm run tsc
     source: .
     plugin: nodejs
     nodejs-version: 14.3.0
