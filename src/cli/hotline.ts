@@ -28,9 +28,18 @@ Arguments:
   <args>... substitutions to pass to the hotline
 
 Stdin:
-  Accepts JSON on stdin
+  Accepts line-delimited arguments on stdin.
 
 Config:
+  hotline uses a yaml-formatted list of dictionaries for configuration. For example,
+
+  > - id: gh/me
+  >   url: https://github.com/myname/$0
+  >
+
+  this file can be:
+  > stored in ~/.hotfile and be picked up globally by hotline
+  > stored anywhere, and be selected by using --config <filepath>
 
 Examples:
   hotline gh/me hotline

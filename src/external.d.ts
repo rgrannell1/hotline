@@ -1,5 +1,5 @@
 
 declare module "neodoc" {
-  var findRoots: any;
-  export = findRoots;
+  var findRoots: any
+  export = findRoots
 }
