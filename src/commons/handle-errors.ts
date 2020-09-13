@@ -10,7 +10,7 @@ Please report the following error message to https://github.com/rgrannell1/hotli
 
 export const handleErrors = (err:CodedError) => {
   if (err.code) {
-    console.error(err.message)
+    console.error(`${err.code}: ${err.message}`)
   } else {
     console.error(userFailingErrorMesasage)
 

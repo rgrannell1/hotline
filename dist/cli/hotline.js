@@ -1,12 +1,8 @@
 #!/usr/bin/env node
-
-import neodoc from 'neodoc'
-
-import { handleErrors } from '../commons/handle-errors.js'
-import { constants } from '../commons/constants.js'
-
-import callApp from '../cli/call-app.js'
-
+import neodoc from 'neodoc';
+import { handleErrors } from '../commons/handle-errors.js';
+import { constants } from '../commons/constants.js';
+import callApp from '../cli/call-app.js';
 const docs = `
 Name:
   hotline — open links faster.
@@ -70,8 +66,6 @@ Copyright:
   LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
   OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
   OTHER DEALINGS IN THE SOFTWARE.
-`
-
-const args = neodoc.run(docs)
-
-callApp(args).catch(handleErrors)
+`;
+const args = neodoc.run(docs);
+callApp(args).catch(handleErrors);

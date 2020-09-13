@@ -28,3 +28,8 @@ export interface HotlineConfigEntry {
   id: string,
   url: string
 }
+
+export interface Config {
+  path: string,
+  entries: HotlineConfigEntry[]
+}

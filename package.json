@@ -5,11 +5,13 @@
   "description": "Open Links Faster",
   "author": "Róisín Grannell <r.grannell2@gmail.com>",
   "bin": {
-    "hl": "out/cli/hotline.js"
+    "hotline": "./dist/cli/hotline.js",
+    "hl": "./dist/cli/hotline.js"
   },
   "preferGlobal": true,
   "scripts": {
-    "tsc": "tsc"
+    "clean": "rm -rf dist",
+    "tsc": "npm run clean; tsc; chmod +x dist/cli/hotline.js"
   },
   "repository": {
     "type": "git",

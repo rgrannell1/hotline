@@ -2,6 +2,10 @@
 import { nanoid } from 'nanoid'
 
 import {
+  InvalidInput
+} from '../commons/errors.js'
+
+import {
   HotlineArgs
 } from '../commons/types'
 
@@ -24,7 +28,6 @@ const countSubstitutions = (pattern:string) => {
   return count
 }
 
-
 const performSubstitutions = (pattern:string, args:HotlineArgs) => {
   const count = countSubstitutions(pattern)
 
@@ -33,7 +36,7 @@ const performSubstitutions = (pattern:string, args:HotlineArgs) => {
   }
 
   if (args.args?.length !== count) {
-    throw new Error(`pattern requires ${count} arguments but you provided ${args.args?.length || 0}`)
+    throw new InvalidInput(`the selected pattern requires ${count} arguments but you provided ${args.args?.length || 0}`)
   }
 
   let final = pattern

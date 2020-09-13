@@ -35,7 +35,7 @@ sudo snap install hotline
 ## Files
 
 ```
-out/*        transpiled typescript output
+dist/*                          transpiled typescript output
 src/
   app/
     find-pattern.ts             find a pattern based on a user's input
@@ -53,6 +53,15 @@ src/
   external.d.ts                 declaration file for modules without @types modules
 snapcraft.yaml                  snapcraft configuration
 tsconfig.json                   typescript configuration
+```
+
+## Build
+
+```sh
+zsh build.zsh
+
+snap connect hotline:hotline-files
+hotline github/me hotline
 ```
 
 ## Tests

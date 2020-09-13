@@ -1,5 +1,5 @@
 name: hotline
-grade: stable
+grade: devel
 version: v0.1.0
 base: core18
 
@@ -10,13 +10,7 @@ summary: Open Links Faster
 description: >
   hotline is a command-line tool that opens "parameterised" links.
 
-confinement: strict
-
-apps:
-  hotline:
-    command: bin/hotline
-    plugs:
-      - home
+confinement: devmode
 
 parts:
   hotline:
@@ -25,3 +19,17 @@ parts:
     nodejs-version: 14.3.0
     nodejs-package-manager: yarn
     build-packages: ['libcurl4-openssl-dev', 'git']
+
+plugs:
+  hotline-files:
+    interface: personal-files
+    read: [$HOME/.hotline]
+
+apps:
+  hotline:
+    plugs:
+      - home
+      - hotline-files
+      - network
+      - desktop
+    command: bin/hotline

@@ -4,6 +4,10 @@ import {
   RawHotlineArgs
 } from '../commons/types'
 
+import {
+  InvalidInput
+} from '../commons/errors.js'
+
 const callApp = async (rawArgs:RawHotlineArgs) => {
   return app(callApp.preprocess(rawArgs))
 }
@@ -17,7 +21,7 @@ callApp.preprocess = (rawArgs:RawHotlineArgs) => {
   }
 
   if (!args.id) {
-    throw new Error('id was not provided.')
+    throw new InvalidInput('hotline id was not provided.')
   }
 
   return args
