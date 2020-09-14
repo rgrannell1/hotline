@@ -8,7 +8,8 @@ import {
 } from '../commons/errors.js'
 
 import {
-  Config
+  Config,
+  HotlineConfigEntry
 } from '../commons/types'
 
 
@@ -46,7 +47,9 @@ export const loadConfig = async (fpath:string | undefined):Promise<Config> => {
 
     throw new MissingConfigError(message)
   } else {
-    const entries = yaml.parse(contentText)
+    const entries = yaml.parse(contentText).sort((data0:HotlineConfigEntry, data1:HotlineConfigEntry) => {
+      return data0.id > data1.id ? 1 : -1
+    })
 
     return {
       path: targetPath,

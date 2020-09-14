@@ -9,6 +9,7 @@ export interface CodedError {
 export interface RawHotlineArgs {
   '--version': any,
   '--config': any,
+  '--show': any,
   '<id>': any,
   '<arg>': any
 }
@@ -16,6 +17,7 @@ export interface RawHotlineArgs {
 export interface HotlineArgs {
   config: string | undefined
   id: string,
+  show: boolean,
   args: string[] | undefined
 }
 

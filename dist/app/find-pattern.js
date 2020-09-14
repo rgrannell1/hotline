@@ -8,6 +8,7 @@ const findPattern = (config, args) => {
     const sorted = config.entries
         .map((data) => data.id)
         .sort();
-    throw new MissingPattern(`no pattern in "${config.path}" matched the provided id "${args.id}". Available patterns:\n${sorted}\n`);
+    const delimited = sorted.join('\n');
+    throw new MissingPattern(`no pattern in "${config.path}" matched the provided id "${args.id}". Available patterns:\n${delimited}\n`);
 };
 export default findPattern;

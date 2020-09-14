@@ -29,7 +29,9 @@ export const loadConfig = async (fpath) => {
         throw new MissingConfigError(message);
     }
     else {
-        const entries = yaml.parse(contentText);
+        const entries = yaml.parse(contentText).sort((data0, data1) => {
+            return data0.id > data1.id ? -1 : 1;
+        });
         return {
             path: targetPath,
             entries

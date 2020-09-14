@@ -7,10 +7,11 @@ callApp.preprocess = (rawArgs) => {
     const args = {
         version: rawArgs['--version'],
         config: rawArgs['--config'],
+        show: rawArgs['--show'],
         id: rawArgs['<id>'],
         args: rawArgs['<arg>']
     };
-    if (!args.id) {
+    if (!args.show && !args.id) {
         throw new InvalidInput('hotline id was not provided.');
     }
     return args;
