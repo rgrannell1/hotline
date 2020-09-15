@@ -50,7 +50,7 @@ const performSubstitutions = (pattern:string, args:HotlineArgs) => {
   }
 
   for (const [key, val] of Object.entries(pairs)) {
-    final = final.replace(key, val)
+    final = final.replace(key, encodeURIComponent(val))
   }
 
   return final
