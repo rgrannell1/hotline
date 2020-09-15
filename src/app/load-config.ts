@@ -4,7 +4,8 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 import {
-  MissingConfigError
+  MissingConfigError,
+  InvalidConfigError
 } from '../commons/errors.js'
 
 import {
@@ -14,6 +15,10 @@ import {
 
 
 import yaml from 'yaml'
+
+const sortConfig = (data0:HotlineConfigEntry, data1:HotlineConfigEntry) => {
+  return data0.id > data1.id ? 1 : -1
+}
 
 export const loadConfig = async (fpath:string | undefined):Promise<Config> => {
   // -- poor workaround for snapcraft masking $HOME
@@ -46,14 +51,15 @@ export const loadConfig = async (fpath:string | undefined):Promise<Config> => {
     }
 
     throw new MissingConfigError(message)
-  } else {
-    const entries = yaml.parse(contentText).sort((data0:HotlineConfigEntry, data1:HotlineConfigEntry) => {
-      return data0.id > data1.id ? 1 : -1
-    })
+  }
 
-    return {
-      path: targetPath,
-      entries
-    }
+  try {
+    const entries = yaml.parse(contentText).sort(sortConfig)
+      return {
+        path: targetPath,
+        entries
+      }
+  } catch (err) {
+    throw new InvalidConfigError(`failed to parse ${targetPath}: ${err.message}`)
   }
 }
