@@ -19,3 +19,10 @@ export class MissingConfigError extends Error {
         this.code = 'HL_003';
     }
 }
+export class InvalidConfigError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = 'InvalidConfigError';
+        this.code = 'HL_004';
+    }
+}

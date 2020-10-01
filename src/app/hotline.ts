@@ -1,6 +1,7 @@
 
 import {loadConfig} from './load-config.js'
 import findPattern from './find-pattern.js'
+import exportConfig from './export-config.js'
 import performSubstitutions from './perform-substitutions.js'
 import openBrowser from './open-browser.js'
 
@@ -27,6 +28,9 @@ const hotline = async (args:HotlineArgs) => {
 
   if (args.show) {
     showConfig(config)
+    process.exit(0)
+  } else if (args.export) {
+    exportConfig(config, args.format)
     process.exit(0)
   }
 

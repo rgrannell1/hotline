@@ -1,8 +1,11 @@
 import * as os from 'os';
 import * as fs from 'fs';
 import * as path from 'path';
-import { MissingConfigError } from '../commons/errors.js';
+import { MissingConfigError, InvalidConfigError } from '../commons/errors.js';
 import yaml from 'yaml';
+const sortConfig = (data0, data1) => {
+    return data0.id > data1.id ? 1 : -1;
+};
 export const loadConfig = async (fpath) => {
     // -- poor workaround for snapcraft masking $HOME
     const configPath = os.homedir().includes('snap')
@@ -28,13 +31,14 @@ export const loadConfig = async (fpath) => {
         }
         throw new MissingConfigError(message);
     }
-    else {
-        const entries = yaml.parse(contentText).sort((data0, data1) => {
-            return data0.id > data1.id ? -1 : 1;
-        });
+    try {
+        const entries = yaml.parse(contentText).sort(sortConfig);
         return {
             path: targetPath,
             entries
         };
+    }
+    catch (err) {
+        throw new InvalidConfigError(`failed to parse ${targetPath}: ${err.message}`);
     }
 };

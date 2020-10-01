@@ -1,37 +1,45 @@
 
 // -- todo actually use these.
 export interface CodedError {
-  message: string,
-  stack: string,
-  code: string
+  readonly message: string,
+  readonly stack: string,
+  readonly code: string
 }
 
 export interface RawHotlineArgs {
-  '--version': any,
-  '--config': any,
-  '--show': any,
-  '<id>': any,
-  '<arg>': any
+  readonly '--export': boolean,
+  readonly '--format': string | undefined,
+  readonly '--version': boolean,
+  readonly '--config': string | undefined,
+  readonly '--show': boolean,
+  readonly '<id>': string | undefined,
+  readonly '<arg>': string[] | undefined
 }
 
 export interface HotlineArgs {
-  config: string | undefined
-  id: string,
-  show: boolean,
-  args: string[] | undefined
+  readonly export: boolean,
+  readonly config: string | undefined,
+  readonly format: ExportFormat,
+  readonly id: string | undefined,
+  readonly show: boolean,
+  readonly args: string[] | undefined
 }
 
 export interface HotlinkData {
-  url: string,
-  id: string
+  readonly url: string,
+  readonly id: string
 }
 
 export interface HotlineConfigEntry {
-  id: string,
-  url: string
+  readonly id: string,
+  readonly url: string
 }
 
 export interface Config {
-  path: string,
-  entries: HotlineConfigEntry[]
+  readonly path: string,
+  readonly entries: HotlineConfigEntry[]
+}
+
+export enum ExportFormat {
+  Chrome
 }

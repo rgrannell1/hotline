@@ -1,7 +1,7 @@
 {
   "type": "module",
-  "name": "bookmark",
-  "version": "1.0.0",
+  "name": "hotline",
+  "version": "0.1.0",
   "description": "Open Links Faster",
   "author": "Róisín Grannell <r.grannell2@gmail.com>",
   "bin": {
@@ -11,7 +11,8 @@
   "preferGlobal": true,
   "scripts": {
     "clean": "rm -rf dist",
-    "tsc": "npm run clean; tsc; chmod +x dist/cli/hotline.js"
+    "tsc": "npm run clean; tsc; chmod +x dist/cli/hotline.js",
+    "bin": "npm run tsc; node dist/cli/hotline.js"
   },
   "repository": {
     "type": "git",
