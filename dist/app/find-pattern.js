@@ -1,8 +1,9 @@
+import Pattern from './pattern.js';
 import { MissingPattern } from '../commons/errors.js';
 const findPattern = (config, args) => {
     for (const { id, url } of config.entries) {
         if (id === args.id) {
-            return { id, url };
+            return new Pattern(id, url);
         }
     }
     const sorted = config.entries

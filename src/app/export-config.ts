@@ -25,7 +25,6 @@ const exportChromeConfig = (config:Config) => {
     return new ChromeEngine(id, url)
   })
 
-
   const html = `
   <html>
   <h1>Hotline Export</h1>

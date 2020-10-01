@@ -2,7 +2,6 @@
 import {loadConfig} from './load-config.js'
 import findPattern from './find-pattern.js'
 import exportConfig from './export-config.js'
-import performSubstitutions from './perform-substitutions.js'
 import openBrowser from './open-browser.js'
 
 import {
@@ -35,7 +34,7 @@ const hotline = async (args:HotlineArgs) => {
   }
 
   const pattern = findPattern(config, args)
-  const link = performSubstitutions(pattern.url, args)
+  const link = pattern.expand(args.args)
 
   return openBrowser(link)
 }

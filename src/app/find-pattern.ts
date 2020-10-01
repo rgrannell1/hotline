@@ -5,6 +5,8 @@ import {
   HotlineArgs
 } from '../commons/types'
 
+import Pattern from './pattern.js'
+
 import {
   MissingPattern
 } from '../commons/errors.js'
@@ -12,7 +14,7 @@ import {
 const findPattern = (config:Config, args:HotlineArgs) => {
   for (const {id, url} of config.entries) {
     if (id === args.id) {
-      return {id, url}
+      return new Pattern(id, url)
     }
   }
 

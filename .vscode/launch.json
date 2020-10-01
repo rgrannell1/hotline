@@ -5,12 +5,26 @@
       "type": "node",
       "request": "launch",
       "preLaunchTask": "npm: tsc",
-      "name": "Launch Hotline",
+      "name": "Launch Hotline (export)",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "args": [
         "--export"
+      ],
+      "program": "${workspaceFolder}/dist/cli/hotline.js",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "npm: tsc",
+      "name": "Launch Hotline (pattern)",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "args": [
+        "hn", "query"
       ],
       "program": "${workspaceFolder}/dist/cli/hotline.js",
       "console": "integratedTerminal"
