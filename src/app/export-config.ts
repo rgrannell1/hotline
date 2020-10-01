@@ -25,9 +25,15 @@ const exportChromeConfig = (config:Config) => {
   const patterns = config.entries
     .map(entry => new Pattern(entry.id, entry.url))
     .filter(entry => entry.arity() <= 1)
+    .map(data => {
+      return {
+        id: data.googleId(),
+        url: data.googleUrl()
+      }
+    })
 
   const script = `
-  const data = ${ JSON.stringify(patterns, null, 2) }
+  let data = ${ JSON.stringify(patterns, null, 2) }
   data.map(data => {
     chrome.send('searchEngineEditStarted', [-1])
     chrome.send('searchEngineEditCompleted', [data.id, data.id, data.url])
@@ -40,6 +46,10 @@ const exportChromeConfig = (config:Config) => {
   <html>
   <h1>Hotline Export</h1>
   <p>Chrome makes it difficult to automatically import search-engines, so this is a workaround.
+
+  - Open chrome://settings/searchEngines
+  - Open DevTools (F12)
+  -
 
   <pre>
   <code>${script}</code>
@@ -59,7 +69,7 @@ const exportChromeConfig = (config:Config) => {
     '',
     'the following search-engines will be added.',
     '',
-    patterns.map(pattern => `    !${pattern.id}: ${pattern.googleUrl()}`).join('\n'),
+    patterns.map(pattern => `    ${pattern.id}: ${pattern.url}`).join('\n'),
     '',
     'type the speed-dial id into Chrome to either search (if one parameter is present) or open the site',
     '',

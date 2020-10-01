@@ -43,6 +43,9 @@ export default class Pattern {
         }
         return Strings.replaceMany(this.url, subs);
     }
+    googleId() {
+        return `!${this.id}`;
+    }
     googleUrl() {
         if (this.arity() > 1) {
             throw new Error('arity too high'); // TODO
