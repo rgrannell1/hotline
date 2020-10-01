@@ -24,7 +24,7 @@
         "<node_internals>/**"
       ],
       "args": [
-        "hn", "query"
+        "hn", "testquery"
       ],
       "program": "${workspaceFolder}/dist/cli/hotline.js",
       "console": "integratedTerminal"

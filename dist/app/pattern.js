@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid';
+import Strings from '../commons/strings.js';
 import { InvalidInput } from '../commons/errors.js';
 export default class Pattern {
     constructor(id, url) {
@@ -37,16 +37,16 @@ export default class Pattern {
         if (args?.length !== count) {
             throw new InvalidInput(`the selected pattern requires ${count} arguments but you provided ${args?.length || 0}`);
         }
-        let final = this.url;
-        let pairs = {};
-        for (let ith = args.length - 1; ith >= 0; --ith) {
-            let sub = nanoid();
-            final = final.replace('$' + ith, sub);
-            pairs[sub] = args[ith];
+        const subs = {};
+        for (let ith = 0; ith < count; ++ith) {
+            subs['$' + ith] = encodeURIComponent(args[ith]);
         }
-        for (const [key, val] of Object.entries(pairs)) {
-            final = final.replace(key, encodeURIComponent(val));
+        return Strings.replaceMany(this.url, subs);
+    }
+    googleUrl() {
+        if (this.arity() > 1) {
+            throw new Error('arity too high'); // TODO
         }
-        return final;
+        return this.url.replace('$0', '%s');
     }
 }

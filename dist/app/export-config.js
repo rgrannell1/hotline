@@ -1,4 +1,5 @@
 import { ExportFormat } from '../commons/types.js';
+import Pattern from './pattern.js';
 import * as fs from 'fs';
 class ChromeEngine {
     constructor(id, url) {
@@ -9,17 +10,28 @@ class ChromeEngine {
     }
 }
 const exportChromeConfig = (config) => {
-    const engines = config.entries.map(({ id, url }) => {
-        return new ChromeEngine(id, url);
-    });
+    const patterns = config.entries
+        .map(entry => new Pattern(entry.id, entry.url))
+        .filter(entry => entry.arity() <= 1);
+    const script = `
+  const data = ${JSON.stringify(patterns, null, 2)}
+  data.map(data => {
+    chrome.send('searchEngineEditStarted', [-1])
+    chrome.send('searchEngineEditCompleted', [data.id, data.id, data.url])
+
+    console.info('added search engine ' + data.id + ' ' + data.url)
+  })
+  `;
     const html = `
   <html>
   <h1>Hotline Export</h1>
   <p>Chrome makes it difficult to automatically import search-engines, so this is a workaround.
 
-  <script>
+  <pre>
+  <code>${script}</code>
+  </pre>
 
-  </script>
+  <script>${script}</script>
   </html>
   `;
     const tmpPath = `/tmp/open-page-${Date.now()}.html`;
@@ -31,7 +43,7 @@ const exportChromeConfig = (config) => {
         '',
         'the following search-engines will be added.',
         '',
-        engines.map(engine => `    ${engine.id}: ${engine.url}`).join('\n'),
+        patterns.map(pattern => `    !${pattern.id}: ${pattern.googleUrl()}`).join('\n'),
         '',
         'type the speed-dial id into Chrome to either search (if one parameter is present) or open the site',
         '',
