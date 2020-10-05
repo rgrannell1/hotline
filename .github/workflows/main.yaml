@@ -23,7 +23,7 @@ jobs:
       run: which hl || exit 1
 
     - name: "Write config file"
-      uses: DamianReeves/write-file-action
+      uses: DamianReeves/write-file-action@v1.0
       with:
         path: ${{ env.home}}/.hotline
         contents: |
