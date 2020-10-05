@@ -21,11 +21,11 @@ const exportChromeConfig = (config) => {
     });
     const script = `
   let data = ${JSON.stringify(patterns, null, 2)}
-  data.map(data => {
+  data.map(datum => {
     chrome.send('searchEngineEditStarted', [-1])
-    chrome.send('searchEngineEditCompleted', [data.id, data.id, data.url])
+    chrome.send('searchEngineEditCompleted', [datum.id, datum.id, datum.url])
 
-    console.info('added search engine ' + data.id + ' ' + data.url)
+    console.info('added search engine ' + datum.id + ' ' + datum.url)
   })
   `;
     const html = `
@@ -33,9 +33,11 @@ const exportChromeConfig = (config) => {
   <h1>Hotline Export</h1>
   <p>Chrome makes it difficult to automatically import search-engines, so this is a workaround.
 
-  - Open chrome://settings/searchEngines
-  - Open DevTools (F12)
-  -
+  <ul>
+    <li>Open chrome://settings/searchEngines</li>
+    <li>Open DevTools (F12)</li>
+    <li>Paste and run the following snippet:</li>
+  </ul>
 
   <pre>
   <code>${script}</code>
@@ -44,10 +46,10 @@ const exportChromeConfig = (config) => {
   <script>${script}</script>
   </html>
   `;
-    const tmpPath = `/tmp/open-page-${Date.now()}.html`;
+    const tmpPath = `/tmp/export-bookmarks.html`;
     fs.writeFileSync(tmpPath, html);
     const message = [
-        '☎️ Open the following URL to automatically import Chrome search-engines hotline links.',
+        '☎️ Open this file URL to import Chrome search-engines hotline links.',
         '',
         `    file://${tmpPath}`,
         '',
@@ -55,9 +57,7 @@ const exportChromeConfig = (config) => {
         '',
         patterns.map(pattern => `    ${pattern.id}: ${pattern.url}`).join('\n'),
         '',
-        'type the speed-dial id into Chrome to either search (if one parameter is present) or open the site',
-        '',
-        'multi-parameter sites are excluded.',
+        'type the speed-dial id into Chrome to either search (if one parameter is present) or open the site (multi-parameter sites are excluded.)',
         ''
     ].join('\n');
     console.log(message);

@@ -44,7 +44,7 @@ export default class Pattern {
         return Strings.replaceMany(this.url, subs);
     }
     googleId() {
-        return `!${this.id}`;
+        return `${this.id}!`;
     }
     googleUrl() {
         if (this.arity() > 1) {
