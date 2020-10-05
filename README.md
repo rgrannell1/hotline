@@ -9,6 +9,8 @@ This tool eliminates the "chain of clicks" you make to get to a website's search
 
 ## Usage
 
+### CLI
+
 Create a `.hotline` file
 
 ```
@@ -23,6 +25,16 @@ hl github/me your-repo
 ```
 
 and the page will open in your default browser.
+
+### Browser
+
+Hotline can generate browser search-engine matching the entries in `~/.hotline`, but they need to be imported manually. Run
+
+```sh
+hl --export
+```
+
+to start the process
 
 ## Build
 
