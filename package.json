@@ -12,7 +12,9 @@
   "scripts": {
     "clean": "rm -rf dist",
     "tsc": "npm run clean; tsc; chmod +x dist/cli/hotline.js",
-    "bin": "npm run tsc; node dist/cli/hotline.js"
+    "build": "tsc; chmod +x dist/cli/hotline.js",
+    "bin": "npm run tsc; node dist/cli/hotline.js",
+    "app": "node ./dist/cli/hotline.js"
   },
   "repository": {
     "type": "git",

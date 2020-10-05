@@ -11,10 +11,10 @@ const docs = `
 Name:
   hotline — open links faster.
 Usage:
-  hotline --export [-f <format> | --format <format>]
-  hotline --show
+  hotline (--show)
   hotline [-c <fpath> | --config <fpath>] (<id>) <arg>...
   hotline [-c <fpath> | --config <fpath>] (<id>)
+  hotline (--export) [-f <format> | --format <format>]
   hotline (-h | --help | --version)
 
 Description:

@@ -32,7 +32,11 @@ callApp.preprocess = (rawArgs:RawHotlineArgs) => {
     args: rawArgs['<arg>']
   }
 
-  if (!(args.show || args.export) && !args.id) {
+  if (args.show || args.export){
+    return args
+  }
+
+  if (!args.id) {
     throw new InvalidInput('hotline id was not provided.')
   }
 

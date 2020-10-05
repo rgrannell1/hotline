@@ -42,8 +42,6 @@ const exportChromeConfig = (config) => {
   <pre>
   <code>${script}</code>
   </pre>
-
-  <script>${script}</script>
   </html>
   `;
     const tmpPath = `/tmp/export-bookmarks.html`;
