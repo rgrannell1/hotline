@@ -3,6 +3,8 @@
 
 ![Hotline CI](https://github.com/rgrannell1/hotline/workflows/Hotline%20CI/badge.svg)
 
+[![asciicast](https://asciinema.org/a/LlW4RZx6cmr2L74HWokY33zxc.svg)](https://asciinema.org/a/LlW4RZx6cmr2L74HWokY33zxc)
+
 A hotline to sites you need quickly.
 
 This tool eliminates the "chain of clicks" you make to get to a website's search-bar and directly takes you to the link you're looking for.
