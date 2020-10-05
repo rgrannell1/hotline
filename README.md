@@ -82,7 +82,8 @@ hotline github/me hotline
 
 ## Tests
 
-None yet
+- Installation & Build
+- `hl --show` displays expected content post-install
 
 ## Performance
 
