@@ -42,10 +42,10 @@ to start the process
 
 ## Installation
 
-On Linux distributions that support Snap packages, run:
-
-```sh
-sudo snap install hotline
+```
+git clone git@github.com:rgrannell1/hotline.git
+cd hotline
+npm install && npm run tsc && npm install --global
 ```
 
 ## Files
