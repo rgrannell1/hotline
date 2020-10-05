@@ -23,4 +23,13 @@ jobs:
       run: which hl || exit 1
 
     - name: "Write config file"
-      run: printf '- id: "testid"\n  url: "www.example.com"' && hl --show
+      uses: DamianReeves/write-file-action
+      with:
+        path: ${{ env.home}}/.hotline
+        contents: |
+          - id: "testid"
+            url: "www.example.com"
+        write-mode: append
+
+    - name: "Run show command"
+      run: hl --show | grep "www.example.com"
