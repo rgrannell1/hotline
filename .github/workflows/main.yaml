@@ -25,7 +25,7 @@ jobs:
     - name: "Write config file"
       uses: DamianReeves/write-file-action@v1.0
       with:
-        path: ~/.hotline
+        path: /home/runner/.hotline
         contents: |
           - id: "testid"
             url: "www.example.com"
