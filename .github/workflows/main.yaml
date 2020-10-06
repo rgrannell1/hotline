@@ -33,3 +33,6 @@ jobs:
 
     - name: "Run show command"
       run: hl --show | grep "www.example.com"
+
+    - name: "Run show command"
+      run: hl testid
