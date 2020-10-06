@@ -34,5 +34,5 @@ jobs:
     - name: "Run show command"
       run: hl --show | grep "www.example.com"
 
-    - name: "Run show command"
-      run: hl testid
+    - name: "Run open command and test output"
+      run: hl testid | grep "www.example.com"
