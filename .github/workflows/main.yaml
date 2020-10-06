@@ -37,9 +37,8 @@ jobs:
     - name: "Test: does --show print the site included in its config?"
       run: hl --show | grep "www.example.com"
 
-    #- name: "Test: does an opened site print a URL?"
-     # run: hl testid | grep "www.example.com"
+    - name: "Test: does an opened site print a URL?"
+      run: hl testid | grep "www.example.com"
    
-    - name: "Test processes"
-      run: "ps"
-      
+    - name: "Test: was there an attempted process-launch?"
+      run: "ps | grep 'xdg-open'"
