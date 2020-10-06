@@ -37,5 +37,5 @@ jobs:
     - name: "Test: does --show print the site included in its config?"
       run: hl --show | grep "www.example.com"
 
-    - name: "Test: does a launched site print the website URL?"
+    - name: "Run open command and test output"
       run: hl testid | grep "www.example.com"
