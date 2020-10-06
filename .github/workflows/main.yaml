@@ -39,3 +39,7 @@ jobs:
 
     - name: "Test: does an opened site print a URL?"
       run: hl testid | grep "www.example.com"
+   
+    - name: "Test processes"
+      run: "ps"
+      
