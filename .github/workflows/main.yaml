@@ -19,9 +19,6 @@ jobs:
     - run: npm install --global
     - run: npm run build --if-present
 
-    - name: Test hotline exists
-      run: which hl || exit 1
-
     - name: "Write config file"
       uses: DamianReeves/write-file-action@v1.0
       with:
@@ -31,5 +28,14 @@ jobs:
             url: "www.example.com"
         write-mode: append
 
-    - name: "Run show command"
+    - name: "Test: is the short hotline alias installed?"
+      run: which hl || exit 1
+
+    - name: "Test: is the long hotline alias installed?"
+      run: which hotline || exit 1
+
+    - name: "Test: does --show print the site included in its config?"
       run: hl --show | grep "www.example.com"
+
+    - name: "Test: does a launched site print the website URL?"
+      run: hl testid | grep "www.example.com"
